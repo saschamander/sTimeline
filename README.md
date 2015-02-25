@@ -1,6 +1,8 @@
 <h1>sTimeline</h1>
 
-This plugin provides a visual processing of events.<br />
-This plugin was developed using jQuery and the Twitter Bootstrap framework.
+<p>
+    This plugin provides a visual processing of events.<br />
+    This plugin was developed using jQuery and the Twitter Bootstrap framework.
+</p>
 
-If you have any questions, just write me a message.
+<b>If you have any questions, feel free to write a message to me.</b>

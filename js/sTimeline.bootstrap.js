@@ -503,41 +503,6 @@ var Timeline = function(selectorId){
             });
         };
     
-
-    // FIXME
-    /*
-    this.registerFilterClickListener = function (){
-        $(".filter-group > .timeline-badge").click(function (){
-            var classes = $(this).attr('class');
-            classes = classes.replace("timeline-badge", "");
-            classes = classes.trim();
-            filterByCategory(classes);
-        });
-    };
-    
-    
-    this.filterByCategory = function(category){
-        if (category === 'default')console.log('default');
-        if (category === 'primary')console.log('primary');
-        if (category === 'success')console.log('success');
-        if (category === 'warning')console.log('warning');
-        if (category === 'danger')console.log('danger');
-    };
-    
-    
-    this.renderFilterButtonsTo = function (id){
-        var markup = "";
-        markup += '<div class="btn-group filter-group">';
-        markup += '<div class="timeline-badge default"></div>';
-        markup += '<div class="timeline-badge primary"></div>';
-        markup += '<div class="timeline-badge success"></div>';
-        markup += '<div class="timeline-badge warning"></div>';
-        markup += '<div class="timeline-badge danger"></div>';
-        markup += '</div>';
-        $(id).append(markup);
-        this.registerFilterClickListener();
-    };
-    */
     return this;
 };
     

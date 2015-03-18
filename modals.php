@@ -7,7 +7,7 @@ include './exportJsonModal.php';
 
 <script type="text/javascript">
     function randomEvent(){
-        sTimeline.createNewEvent("Testevent", new Date().toLocaleString(), loremIpsum, "star", "success", false, true, ""); 
+        sTimeline.createNewEvent("Testevent", new Date().toLocaleString(), loremIpsum, "star", "success", false, true); 
     }
     
     $(function() {

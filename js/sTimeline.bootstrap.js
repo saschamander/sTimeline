@@ -195,10 +195,9 @@ var Timeline = function(selectorId){
          * @param {String} category Category of the new event.
          * @param {boolean} inverted Indicates if event content shall be on the right or left.
          * @param {boolean} initToggled Indicates if event shall be toggled onPageLoad
-         * @param {String} img Image of the new event
          * @param {function} callbackFn Callback function that will be triggered after the creation of the new Event. The new event is handed to this function.
          */
-        this.createNewEvent = function(title, time, content, glyphicon, category, inverted, initToggled, img, callbackFn){
+        this.createNewEvent = function(title, time, content, glyphicon, category, inverted, initToggled, callbackFn){
             var eventId;
             try{
                 eventId = allEvents.length;
@@ -206,7 +205,7 @@ var Timeline = function(selectorId){
                 eventId = 0;
             }
             
-            var event = new Event(eventId, title, time, content, glyphicon, category, inverted, initToggled, img);
+            var event = new Event(eventId, title, time, content, glyphicon, category, inverted, initToggled);
             allEvents.push(event);
             console.log(INFO_CREATE_EVENT + event.id);
             this.refresh();
@@ -233,8 +232,7 @@ var Timeline = function(selectorId){
                 inverted = true;
             }
             var initToggled = false;
-            var img = "";
-            this.createNewEvent(title, time, content, glyphicon, category, inverted, initToggled, img, function (event){
+            this.createNewEvent(title, time, content, glyphicon, category, inverted, initToggled, function (event){
 //                sTimeline.autoAlign();
                 try{
                     callbackFn(event);
@@ -436,7 +434,7 @@ var Timeline = function(selectorId){
                 var parsed = JSON.parse(jsonString);
                 if(!append) allEvents = [];
                 for(var event in parsed){
-                    var id, title, time, content, glyphicon, category, inverted, initToggled, img;
+                    var id, title, time, content, glyphicon, category, inverted, initToggled;
                     var newObject = parsed[event];
                     for(var key in newObject) {
                         switch (key){
@@ -448,11 +446,10 @@ var Timeline = function(selectorId){
                             case "category": category = newObject[key]; break;
                             case "inverted": inverted = newObject[key]; break;
                             case "initToggled": initToggled = newObject[key]; break;
-                            case "img": img = newObject[key]; break;
                         }                        
                     }
                     
-                    this.createNewEvent(title, time, content, glyphicon, category, inverted, initToggled, img);                                        
+                    this.createNewEvent(title, time, content, glyphicon, category, inverted, initToggled);                                        
                 }
             }catch (e){
                 console.log(e);
@@ -544,7 +541,7 @@ var Timeline = function(selectorId){
     return this;
 };
     
-    var Event = function(id, title, time, content, glyphicon, category, inverted, initToggled, img){
+    var Event = function(id, title, time, content, glyphicon, category, inverted, initToggled){
         this.id = id;
         this.title = title;
         this.time = time;
@@ -553,7 +550,6 @@ var Timeline = function(selectorId){
         this.category = category;
         this.inverted = inverted;
         this.initToggled = initToggled;
-        this.img = img;
         
         /**        
          * @returns {int} Id of current event.
@@ -699,11 +695,6 @@ var Timeline = function(selectorId){
             markup += '<span><span class="glyphicon glyphicon-time"></span> ';
             if(this.time !== undefined && typeof this.time === 'string')  markup += this.time;
             markup += '</span>';
-            /*
-            markup += '<div class="timeline-img">'; //Open timeline img
-            markup += '<img src="' + this.img + '" alt="timeline-img">';
-            markup += '</div>'; // Close timeline img
-            */
             markup += '</div>'; //Close Timeline header
             if(this.content != ""){
                 markup += '<hr>';

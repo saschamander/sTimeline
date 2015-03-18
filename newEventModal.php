@@ -35,10 +35,6 @@
                             <input id="initToggled" type="checkbox" autocomplete="off"> Initial toggled
                         </label>
                     </div>
-                    <div class="input-group">
-                        <label class="input-group-addon" for="message-text" class="control-label">Image path:</label>
-                        <input class="form-control" id="img"></input>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">

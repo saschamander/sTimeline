@@ -1,14 +1,15 @@
-$('#newEvent-Modal').on('show.bs.modal', function (event) {});
-$('#newEvent-Modal').on('hidden.bs.modal', function (event) {
-    $("#title").val("");
-    $("#time").val("");
-    $("#content").val("");
-    $("#glyphicon").val("");
-    $("#category").val("");
-    $("#inverted").prop( "checked" );
-    $("#initToggled").prop( "checked" );
-    $("#img").val("");
-});    
+$(function() {
+    randomEvent();    
+});
+
+function randomEvent(){
+    sTimeline.createNewEvent("Testevent", new Date().toLocaleString(), loremIpsum, "star", "success", false, true); 
+}
+
+function generateExportJson(){
+    var jsonString = sTimeline.exportJSON();
+    $("#export-json").val(jsonString);
+}   
 
 function getValsAndCreateNewEvent(){
     var title = $("#title").val();

@@ -6,3 +6,7 @@
 </p>
 
 <b>If you have any questions, feel free to write a message to me.</b>
+
+<p>
+<b>License:</b> Apache License Version 2.0
+</p>

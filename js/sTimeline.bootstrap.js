@@ -4,6 +4,8 @@
     Website    : http://sascha-mander.de
     File       : sTimeline.bootstrap.js
 */
+var DEBUG_MODE = false;
+
 var INFO_CREATE_EVENT = "Created event with id: ";
 var INFO_REMOVE_EVENT = "Removed event with id: ";
 var ERROR_REMOVE_LAST_EVENT = "Error removing last element.";
@@ -169,7 +171,9 @@ var Timeline = function(selectorId){
                     }
                 }
             }catch(e){
-                console.log(e);
+                if(DEBUG_MODE){
+                    console.log(e);
+                }
                 result = ERROR_GET_EVENT_BY_ICON + icon;
             }
             
@@ -207,7 +211,9 @@ var Timeline = function(selectorId){
             
             var event = new Event(eventId, title, time, content, glyphicon, category, inverted, initToggled);
             allEvents.push(event);
+            if(DEBUG_MODE){
             console.log(INFO_CREATE_EVENT + event.id);
+        }
             this.refresh();
             try{
                 callbackFn(event);
@@ -253,7 +259,9 @@ var Timeline = function(selectorId){
             var index = allEvents.indexOf(event);
             if(index != -1) {
                 allEvents.splice(index, 1);
+                if(DEBUG_MODE){
                 console.log(INFO_REMOVE_EVENT + id);
+            }
             }            
             this.refresh();
         };
@@ -268,7 +276,9 @@ var Timeline = function(selectorId){
                 id = allEvents[lastEventIndex].getId();
                 this.removeEventById(id);            
             }catch(e){
+                if(DEBUG_MODE){
                 console.log(ERROR_REMOVE_LAST_EVENT);
+            }
             }            
         };
         
@@ -298,7 +308,9 @@ var Timeline = function(selectorId){
                     return event1.getId() - event2.getId();
                 });
             } catch (e) {
+                if(DEBUG_MODE){
                 console.log(ERROR_SORT);
+            }
             }
             this.refresh();
             try {
@@ -319,7 +331,9 @@ var Timeline = function(selectorId){
                     return event1.getTime() - event2.getTime();
                 });
             } catch (e) {
+                if(DEBUG_MODE){
                 console.log(ERROR_SORT);
+            }
             }
             this.refresh();
             try {
@@ -342,7 +356,9 @@ var Timeline = function(selectorId){
                     return 0;
                 });
             } catch (e) {
+                if(DEBUG_MODE){
                 console.log(ERROR_SORT + e);
+            }
             }
             this.refresh();
             try {
@@ -365,7 +381,9 @@ var Timeline = function(selectorId){
                     return 0;
                 });
             } catch (e) {
+                if(DEBUG_MODE){
                 console.log(ERROR_SORT + e);
+            }
             }
             this.refresh();
             try {
@@ -387,7 +405,9 @@ var Timeline = function(selectorId){
                 }
                 this.refresh();
             }catch(e){
+                if(DEBUG_MODE){
                 console.log(ERROR_AUTO_ALIGN);
+            }
             }
         };
         
@@ -399,7 +419,9 @@ var Timeline = function(selectorId){
             try{
                 markup = this.createMarkup();
             }catch(e){
+                if(DEBUG_MODE){
                 console.log(e);
+            }
                 markup = '<div class="alert alert-dismissible alert-danger">An error occured during the markup creation!</div>';
             }
             try{
@@ -407,7 +429,9 @@ var Timeline = function(selectorId){
                 this.registerClickListener();
                 $(".timeline > li.not-toggled .timeline-panel").css("display", "none");
             }catch (e){
+                if(DEBUG_MODE){
                 console.log(ERROR_REFRESH);
+            }
             }                        
         };
         
@@ -452,7 +476,9 @@ var Timeline = function(selectorId){
                     this.createNewEvent(title, time, content, glyphicon, category, inverted, initToggled);                                        
                 }
             }catch (e){
+                if(DEBUG_MODE){
                 console.log(e);
+            }
             }
             try{
                 callbackFn(allEvents);
